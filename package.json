@@ -1,0 +1,37 @@
+{
+  "name": "react-dnd",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "knex": "knex --knexfile ./server/db/knexfile.js",
+    "dev": "nodemon server --watch server & yarn build --watch",
+    "start": "node server",
+    "build": "webpack --config ./client/webpack.config.js",
+    "test": "jest --watchAll",
+    "postinstall": "yarn build"
+  },
+  "babel": {
+    "presets": [
+      "env",
+      "react"
+    ],
+    "plugins": [
+      "transform-object-rest-spread"
+    ]
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "react": "^16.3.2",
+    "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^3.11.0"
+  }
+}
