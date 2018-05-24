@@ -7,7 +7,7 @@ export default class Square extends Component {
     const fill = black ? 'black' : 'white'
     const stroke = black ? 'white' : 'black'
 
-    return <div style = {{
+    return <div className='Square' style = {{
       backgroundColor: fill,
       color: stroke,
       width: '100%',
