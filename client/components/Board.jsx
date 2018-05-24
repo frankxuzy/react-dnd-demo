@@ -1,11 +1,13 @@
 import React, {Component} from 'react'
 import propTypes from 'prop-types'
+import {DragDropContext} from 'react-dnd'
+import HTML5Backend from 'react-dnd-html5-backend'
 
 import Square from './Square'
 import Knight from './Knight'
 import {moveKnight} from '../utils'
 
-export default class Board extends Component {
+class Board extends Component {
   constructor (props) {
     super(props)
     this.renderSquare = this.renderSquare.bind(this)
@@ -62,3 +64,5 @@ Board.propTypes = {
     propTypes.number.isRequired
   ).isRequired
 }
+
+export default DragDropContext(HTML5Backend)(Board)
