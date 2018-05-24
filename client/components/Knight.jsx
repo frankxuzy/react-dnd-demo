@@ -1,6 +1,22 @@
 import React, {Component} from 'react'
+import {DragSource} from 'react-dnd'
 
-export default class Knight extends Component {
+import {ItemTypes} from '../utils'
+
+const knightSource = {
+  beginDrag (props) {
+    return {}
+  }
+}
+
+function collect (connect, monitor) {
+  return {
+    connectDragSource: connect.dragSource(),
+    isDragging: monitor.isDragging()
+  }
+}
+
+class Knight extends Component {
   render () {
     return (
       <span style = {{
@@ -11,3 +27,5 @@ export default class Knight extends Component {
     )
   }
 }
+
+export default DragSource(ItemTypes.KNIGHT, knightSource, collect)(Knight)

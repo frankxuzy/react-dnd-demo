@@ -4,3 +4,7 @@ export function observe (receive) {
     Math.floor(Math.random() * 8)
   ]), 500)
 }
+
+export const ItemTypes = {
+  KNIGHT: 'knight'
+}
