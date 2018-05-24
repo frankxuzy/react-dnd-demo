@@ -1,12 +1,10 @@
 import React from 'react'
-import Knight from './Knight'
+import Board from './Board'
 
 class App extends React.Component {
   render () {
     return (
-      <div>
-        <Knight />
-      </div>
+      <Board knightPosition={[2, 1]} />
     )
   }
 }
