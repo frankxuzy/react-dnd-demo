@@ -3,6 +3,7 @@ import propTypes from 'prop-types'
 
 import Square from './Square'
 import Knight from './Knight'
+import {moveKnight} from '../utils'
 
 export default class Board extends Component {
   constructor (props) {
@@ -20,12 +21,20 @@ export default class Board extends Component {
       : null
 
     return (
-      <div key={i + (j + 1) * 10} style = {{width: '12.5%', height: '120px'}}>
+      <div
+        key={i + (j + 1) * 10}
+        style = {{width: '12.5%', height: '120px'}}
+        onClick = {() => this.handleSquareClick(x, y)}
+      >
         <Square black={black}>
           {piece}
         </Square>
       </div>
     )
+  }
+
+  handleSquareClick (toX, toY) {
+    moveKnight(toX, toY)
   }
 
   render () {
