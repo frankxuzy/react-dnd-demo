@@ -29068,7 +29068,7 @@ var Board = function (_Component) {
 
       var x = i;
       var y = j;
-      var black = (x + y) % 2 === 0;
+      var black = (x + y) % 2 === 1;
 
       var _props$knightPosition = _slicedToArray(this.props.knightPosition, 2),
           knightX = _props$knightPosition[0],
@@ -29213,6 +29213,10 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactDnd = __webpack_require__(44);
+
+var _utils = __webpack_require__(197);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -29220,6 +29224,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var knightSource = {
+  beginDrag: function beginDrag(props) {
+    return {};
+  }
+};
+
+function collect(connect, monitor) {
+  return {
+    connectDragSource: connect.dragSource(),
+    isDragging: monitor.isDragging()
+  };
+}
 
 var Knight = function (_Component) {
   _inherits(Knight, _Component);
@@ -29233,20 +29250,27 @@ var Knight = function (_Component) {
   _createClass(Knight, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(
-        'span',
+      var _props = this.props,
+          connectDragSource = _props.connectDragSource,
+          isDragging = _props.isDragging;
+
+      return connectDragSource(_react2.default.createElement(
+        'div',
         { style: {
-            fontSize: '80px'
+            opacity: isDragging ? 0.5 : 1,
+            fontSize: 80,
+            fontWeight: 'bold',
+            cursor: 'move'
           } },
         '\u2658'
-      );
+      ));
     }
   }]);
 
   return Knight;
 }(_react.Component);
 
-exports.default = Knight;
+exports.default = (0, _reactDnd.DragSource)(_utils.ItemTypes.KNIGHT, knightSource, collect)(Knight);
 
 /***/ }),
 /* 197 */
@@ -29280,6 +29304,10 @@ function moveKnight(toX, toY) {
   knightPosition = [toX, toY];
   emitChange();
 }
+
+var ItemTypes = exports.ItemTypes = {
+  KNIGHT: 'knight'
+};
 
 /***/ })
 /******/ ]);

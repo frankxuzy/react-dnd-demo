@@ -15,7 +15,7 @@ class Board extends Component {
   renderSquare (i, j) {
     const x = i
     const y = j
-    const black = (x + y) % 2 === 0
+    const black = (x + y) % 2 === 1
 
     const [knightX, knightY] = this.props.knightPosition
     const piece = (x === knightX && y === knightY)
