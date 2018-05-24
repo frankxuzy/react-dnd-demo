@@ -1,11 +1,12 @@
 import React from 'react'
 import {render} from 'react-dom'
+import {observe} from './utils'
 
-import App from './components/App'
+import Board from './components/Board'
 
 document.addEventListener('DOMContentLoaded', () => {
-  render(
-    <App />,
+  observe(knightPosition => render(
+    <Board knightPosition={knightPosition} />,
     document.getElementById('app')
-  )
+  ))
 })

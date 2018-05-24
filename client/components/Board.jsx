@@ -20,7 +20,7 @@ export default class Board extends Component {
       : null
 
     return (
-      <div key={i} style = {{width: '12.5%', height: '120px'}}>
+      <div key={i + (j + 1) * 10} style = {{width: '12.5%', height: '120px'}}>
         <Square black={black}>
           {piece}
         </Square>
