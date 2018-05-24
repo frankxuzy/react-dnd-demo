@@ -18,12 +18,16 @@ function collect (connect, monitor) {
 
 class Knight extends Component {
   render () {
-    return (
-      <span style = {{
-        fontSize: '80px'
+    const {connectDragSource, isDragging} = this.props
+    return connectDragSource(
+      <div style={{
+        opacity: isDragging ? 0.5 : 1,
+        fontSize: 80,
+        fontWeight: 'bold',
+        cursor: 'move'
       }}>
       ♘
-      </span>
+      </div>
     )
   }
 }

@@ -29283,13 +29283,20 @@ var Knight = function (_Component) {
   _createClass(Knight, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(
-        'span',
+      var _props = this.props,
+          connectDragSource = _props.connectDragSource,
+          isDragging = _props.isDragging;
+
+      return connectDragSource(_react2.default.createElement(
+        'div',
         { style: {
-            fontSize: '80px'
+            opacity: isDragging ? 0.5 : 1,
+            fontSize: 80,
+            fontWeight: 'bold',
+            cursor: 'move'
           } },
         '\u2658'
-      );
+      ));
     }
   }]);
 
@@ -29403,7 +29410,7 @@ var BoardSquare = function (_Component) {
           connectDropTarget = _props.connectDropTarget,
           isOver = _props.isOver;
 
-      var black = (x + y) % 2 === 0;
+      var black = (x + y) % 2 === 1;
 
       return connectDropTarget(_react2.default.createElement(
         'div',

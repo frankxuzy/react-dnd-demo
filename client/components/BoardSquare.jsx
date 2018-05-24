@@ -20,7 +20,7 @@ function collect (connect, monitor) {
 class BoardSquare extends Component {
   render () {
     const {x, y, connectDropTarget, isOver} = this.props
-    const black = (x + y) % 2 === 0
+    const black = (x + y) % 2 === 1
 
     return connectDropTarget(
       <div style={{
